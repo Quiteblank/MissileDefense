@@ -45,8 +45,6 @@ public class MDGame extends JPanel implements MouseListener {
 	Turret turret;
 	Wall ground, turretStand;
 	
-	//Sound sound;
-	
 	// GameObject lists
 	List<List<GameObject>> objectList = new ArrayList<List<GameObject>>();
 	List<GameObject> buildingList = new ArrayList<GameObject>();
@@ -399,8 +397,13 @@ public class MDGame extends JPanel implements MouseListener {
 		
 		// Shells, Missiles, Buildings, and Walls
 		for (List<GameObject> list : objectList) {
-			for (GameObject obj : list)
+			Iterator<GameObject> iter = list.iterator();
+			
+			while (iter.hasNext())
+			{
+				GameObject obj = iter.next();
 				obj.render(g2d);
+			}
 		}
 		
 		// Turret
